@@ -22,7 +22,7 @@ chmod +x listener.py
 
 
 
-Start listener (default port 4444):
+Start listener (listens on port 4444 by default):
 ```
 python3 listener.py
 ```
@@ -40,6 +40,7 @@ Shell> exit
 ## Output Example:
 
 <img width="891" height="344" alt="Screenshot 2025-08-28 at 11 06 19" src="https://github.com/user-attachments/assets/435f85ce-2f0d-4750-a45d-607ef341a958" />
+
 
 
 
