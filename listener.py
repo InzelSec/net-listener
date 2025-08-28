@@ -3,7 +3,7 @@
 # Description: listens on a TCP port, accepts a connection and interacts like a reverse netcat session.
 #
 # Usage:
-#   python3 listener.py            # listens on 4444
+#   python3 listener.py            # listens on 4444 by default
 #   python3 listener.py 9001       # listens on 9001
 #   [Optional] type "exit" to close session
 
@@ -13,13 +13,11 @@ import shutil
 import sys
 import os
 
-# === Colors ===
 GREEN  = "\033[0;32m"
 RED    = "\033[0;31m"
 YELLOW = "\033[1;33m"
 NC     = "\033[0m"
 
-# === Banner (mantém seu estilo) ===
 def banner_inzelsec():
     width = shutil.get_terminal_size((80, 20)).columns
     line = "=" * width
@@ -40,7 +38,6 @@ def banner_inzelsec():
         print("InzelSec".center(width))
     print(f"{NC}{line}{NC}\n")
 
-# === argparse colorido ===
 import argparse
 class ColorArgParser(argparse.ArgumentParser):
     def print_usage(self, file=None):
@@ -57,7 +54,6 @@ class ColorArgParser(argparse.ArgumentParser):
         sys.stderr.write(f"{RED}error: {message}{NC}\n")
         self.exit(2)
 
-# === Listener ===
 def start_listener(port):
     try:
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server:
@@ -66,7 +62,6 @@ def start_listener(port):
             server.listen(1)
             print(f"{GREEN}[+] Listening on 0.0.0.0:{port}{NC}")
 
-            # aguarda conexão, mas trata Ctrl+C de forma limpa
             try:
                 conn, addr = server.accept()
             except KeyboardInterrupt:
@@ -109,7 +104,6 @@ def start_listener(port):
         print(f"{RED}[-] Error: {e}{NC}")
         sys.exit(1)
 
-# === Main ===
 if __name__ == "__main__":
     banner_inzelsec()
 
